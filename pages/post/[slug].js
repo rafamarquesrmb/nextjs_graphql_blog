@@ -8,32 +8,40 @@ import {
   Comments,
   CommentsForm,
   Loader,
+  PersonalHead,
 } from "../../components";
 import { useRouter } from "next/router";
-
 const PostDetails = ({ post }) => {
   const router = useRouter();
 
   if (router.isFallback) {
-    return <Loader />;
+    return (
+      <>
+        <PersonalHead title="Loading" />
+        <Loader />
+      </>
+    );
   }
   return (
-    <div className="container mx-auto px-10 mb-8">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        <div className="lg:col-span-8 col-span-1">
-          <PostDetail post={post} />
-          <Author author={post.author} />
-          <CommentsForm slug={post.slug} />
-          <Comments slug={post.slug} />
-        </div>
-        <div className="lg:col-span-4 col-span-1">
-          <div className="lg:sticky relative top-8">
-            <PostWidget slug={post.slug} category_slug={post.category.slug} />
-            <Categories />
+    <>
+      <PersonalHead title={post.title} description={post.excerpt} />
+      <div className="container mx-auto px-10 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-8 col-span-1">
+            <PostDetail post={post} />
+            <Author author={post.author} />
+            <CommentsForm slug={post.slug} />
+            <Comments slug={post.slug} />
+          </div>
+          <div className="lg:col-span-4 col-span-1">
+            <div className="lg:sticky relative top-8">
+              <PostWidget slug={post.slug} category_slug={post.category.slug} />
+              <Categories />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
