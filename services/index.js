@@ -123,6 +123,7 @@ export const getPostDetails = async (slug) => {
   const result = await request(graphqlAPI, query, { slug });
   return result.post;
 };
+
 export const submitComment = async (obj) => {
   const result = await fetch("/api/comments", {
     method: "POST",
@@ -133,6 +134,7 @@ export const submitComment = async (obj) => {
   });
   return result.json();
 };
+
 export const getComments = async (slug) => {
   const query = gql`
     query GetComments($slug: String!) {
