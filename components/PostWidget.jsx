@@ -34,7 +34,7 @@ const PostWidget = ({ category_slug, slug }) => {
             <p className="text-gray-500 font-xs">
               {moment(post.createdAd).format("DD / MM / YYYY")}
             </p>
-            <Link href={`post/${post.slug}`}>
+            <Link href={`../post/${post.slug}`}>
               <span className="text-md transition duration-300 cursor-pointer hover:text-blue-600">
                 {post.title}
               </span>
