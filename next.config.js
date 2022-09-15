@@ -1,1 +1,5 @@
-module.exports = Object.assign({ target: "serverless" });
+/** @type {import('next').NextConfig} */
+module.exports = {
+  reactStrictMode: true,
+  target: "serverless",
+};
